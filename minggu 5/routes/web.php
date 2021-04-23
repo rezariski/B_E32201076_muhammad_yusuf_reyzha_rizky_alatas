@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\frontend\HomeController; 
-use App\Http\Controllers\backend\DashboardController; 
+use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\jejakkoding\jejakkoding; 
+
 
 
 
@@ -22,8 +24,14 @@ use App\Http\Controllers\backend\DashboardController;
     
         Route::resource('home', HomeController::class);
         Route::resource('dashboard', DashboardController::class);
+      //  Route::resource('/', jejakkoding::class);
+
 
  //   });
+
+ Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/menu', function () {
     return view('menu');
@@ -50,3 +58,5 @@ Route::get('page/{nomor}', function ($nomor) {
 Route::get('user', [ManagementUserController::class, 'index']);
 
 Route::resource('user', ManagementUserController::class);
+Auth::routes();
+
