@@ -1,5 +1,5 @@
 <!--sidebar start-->
-<aside>
+    <aside>
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
@@ -75,6 +75,6 @@
 
         </ul>
         <!-- sidebar menu end-->
-        </div>
+      </div>
     </aside>
     <!--sidebar end-->

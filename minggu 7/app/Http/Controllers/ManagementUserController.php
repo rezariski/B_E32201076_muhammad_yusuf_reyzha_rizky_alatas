@@ -5,40 +5,39 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 class ManagementUserController extends Controller
+{  
+    public function index()
+    {
+       return "Ini metode index dalam controller ManagementUser,";
+       //  return "Metode ini digunakan untuk mengambil semua data user";
+    }
+public function create()
 {
-    public function index() 
-    {
-        //return "ini adalah method index dalam penggunaan controller management user";
-        $nama = "Muhammad Yusuf Reyzha";
+    return "Metode ini digunakan untuk menampilkan form untuk menambah data user";
+}
 
-        $pelajaran = ["Algoritma & Pemrograman","Kalkuls","Pemrograman Web"];
+public function store(Request $request)
+{
+    return "Metode ini digunakan untuk menciptakan data user yang baru";
+}
 
-        return view('home', compact('nama','pelajaran'));
-    }
+public function show($id)
+{
+    return "Metode ini digunakan untuk mengambil satu data user dengan id=" . $id;
+}
 
-    public function create() 
-    {
-        return "ini adalah method menambahkan user dalam penggunaan controller";
-    }
+public function edit($id)
+{
+    return "Metode ini digunakan untuk menampilkan form untuk mengubah data edit dengan id=" . $id;
+}
 
-    public function store(Request $request) 
-    {
-        return "ini adalah method menambahkan user dalam penggunaan controller";
-    }
+public function update(Request $request, $id)
+{
+    return "Metode ini digunakan untuk mengubah data user dengan id=" . $id;
+}
 
-    public function show($id) {
-        return "ini adalah method mengambil data user dalam id";
-    }
-    
-    public function edit($id) {
-        return "ini adalah method menampilkan form untuk di edit dengan id";
-    }
-
-    public function update(Request $request, $id) {
-        return "ini adalah method mengubah data user dengan id";
-    }
-
-    public function destroy($id) {
-        return "ini adalah method menghapus data user dengan id";
-    }
+public function destroy($id)
+{
+    return "Metode ini digunakan untuk menghapus data user dengan id=" . $id;
+}
 }

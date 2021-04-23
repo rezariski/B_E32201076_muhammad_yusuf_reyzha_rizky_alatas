@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request,
+App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -12,4 +12,3 @@ class DashboardController extends Controller
         return view('backend.dashboard');
     }
 }
-

@@ -1,11 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ManagementUserController;
-use App\Http\Controllers\frontend\HomeController; 
-use App\Http\Controllers\backend\DashboardController; 
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -16,37 +11,75 @@ use App\Http\Controllers\backend\DashboardController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+
 */
+Route::get('/', function () {
+    return view('welcome');
 
-//Route::group(['namespace' => 'frontend'], function()
-    
-        Route::resource('home', HomeController::class);
-        Route::resource('dashboard', DashboardController::class);
-
- //   });
-
-Route::get('/menu', function () {
-    return view('menu');
 });
-
-Route::get('/gambar', function () {
-    return view('image');
-});
-
 
 Route::get('/hello', function () {
-	return 'Hello World';
+    return 'Hello World';
 });
-
-Route::get('/welcome', function() {
-	echo '<h1><center>Selamat Datang</center></h1>';
-	echo '<h2><center>Selamat Belajar</center></h2>';
+Route::get('/belajar', function () {
+    echo '<h1>Hello World</h1>';
+    echo '<p>Sedang Belajar Laravel </p> ';
 });
-
 Route::get('page/{nomor}', function ($nomor) {
-    return 'Ini Halaman ke- '.$nomor;
+    return 'Ini Halaman ke-' . $nomor;
+});
+/*
+Route::get('user', 'ManagementUserController@index');
+
+//Route::get('user', 'ManagementUserController@index');
+Route::resource('user', 'ManagementUserController');
+ 
+
+
+Route::group(['namespace'=> 'Frontend'], function()
+    {
+        Route::resource('home','HomeController');
+    });
+
+Route::group(['namespace'=> 'Backend'], function()
+{
+    Route::resource('dashboard','DashboardController');
+
+
 });
 
-Route::get('user', [ManagementUserController::class, 'index']);
+*/
+Auth::routes();
+    
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+    Route::middleware(['web' , 'auth'])->group(function () {
+        Route::resource('dashboard', DashboardController::class);
+    });
+Auth::routes();
 
-Route::resource('user', ManagementUserController::class);
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::group(['namespace' => 'Frontend'], function ()
+    {
+        Route::get('/', 'HomeController@index');
+        Route::resource('home', 'HomeController');
+
+    });
+Route::group(['middleware' => ['web','auth']], function(){
+    Route::group(['namespace'=> 'Backend'], function()
+    {
+        Route::resource('dashboard','DashboardController');
+    });
+
+});
